@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --canvas: #0c0d11;
+  --elevated: #14161c;
+  --card: #1a1d26;
+  --line: rgb(255 255 255 / 0.1);
+  --ink: #f4f4f5;
+  --muted: #b0b3bd;
+  --accent: #6d28d9;
+  --accent-ink: #ffffff;
+  --link: #ddd0ff;
+  --cyan: #9ed9d2;
+  --danger: #fecaca;
+  --warn: #fde68a;
+  --ok: #a7f3d0;
+  --shadow: 0 16px 40px rgb(0 0 0 / 0.28);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --canvas: #f3f4f8;
+  --elevated: #ffffff;
+  --card: #ffffff;
+  --line: rgb(15 18 28 / 0.12);
+  --ink: #16181d;
+  --muted: #525761;
+  --accent: #6d28d9;
+  --accent-ink: #ffffff;
+  --link: #5b21b6;
+  --cyan: #0f766e;
+  --danger: #991b1b;
+  --warn: #92400e;
+  --ok: #047857;
+  --shadow: 0 12px 32px rgb(15 18 28 / 0.08);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-elevated: var(--elevated);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-link: var(--link);
+  --color-cyan: var(--cyan);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --color-ok: var(--ok);
+  --font-sans: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% -15%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    var(--canvas);
+  color: var(--ink);
+  font-family: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 50;
+  transform: translateY(-150%);
+  border-radius: 0.75rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

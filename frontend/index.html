@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="description"
+      content="SyncSound coordinates the same song across separate phones. Each person uses their own browser and headphones."
+    />
+    <meta name="theme-color" content="#0c0d11" />
+    <title>SyncSound</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      ;(function () {
+        var theme = 'dark'
+        try {
+          var raw = localStorage.getItem('syncsound.preferences.v1')
+          if (raw) {
+            var parsed = JSON.parse(raw)
+            var saved = parsed && parsed.state && parsed.state.theme
+            if (saved === 'light' || saved === 'dark' || saved === 'system') theme = saved
+          }
+        } catch (e) {}
+        var resolved = theme
+        if (theme === 'system') {
+          resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.dataset.theme = resolved
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

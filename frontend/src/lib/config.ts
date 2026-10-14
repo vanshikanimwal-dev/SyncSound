@@ -1,0 +1,9 @@
+export const MAX_DISPLAY_NAME = 40
+export const MAX_ROOM_NAME = 60
+export const MAX_QUEUE_TITLE = 120
+export const MIN_PARTICIPANTS = 2
+export const MAX_PARTICIPANTS = 20
+export const DEFAULT_MAX_PARTICIPANTS = 8
+export const ROOM_TTL_MINUTES = 240
+export const MAX_TTL_MINUTES = 24 * 60
+export const MAX_QUEUE_ITEMS = 50
